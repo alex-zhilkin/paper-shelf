@@ -18,6 +18,8 @@ PDFs can be read immediately after uploading on the current device. The reader s
 
 The app repository is public; the library repository is private. Only `site/` is published. `library-seed/` is excluded from Git and Pages deployment. Metadata is stored in `shelf/catalog.json`; PDFs in `shelf/pdfs/`. Reading changes save to IndexedDB first, then sync. Each metadata field has its own change timestamp; competing note edits preserve both versions, and chat histories are merged by message ID. Progress updates are batched to avoid a commit for every page turn. A visible error preserves pending local changes for retry. This is single-person synchronization, not a collaborative editing system.
 
+New PDF versions use filenames containing their SHA-256 fingerprint. Sync uploads a new file before updating the catalog, so simultaneous replacements cannot overwrite each other's bytes. Device caches use the same fingerprint; legacy files remain readable. Prior versions remain in Git history and may also remain as unreferenced files.
+
 The private library includes the RaSP and PROSTATA PDFs from their publishers, along with the 1996 proceedings manuscript PDF obtained from the [Stanford Pacific Symposium on Biocomputing archive](https://psb.stanford.edu/psb-online/proceedings/psb96/verkhivker.pdf). Other entries are references with verified source links; source access and PDF availability vary. Attach PDFs you have access to. Papers with a public PDF link offer a download attempt; sources that block cross-origin downloads require downloading and attaching the file manually.
 
 ## Collections
@@ -65,5 +67,5 @@ Push to `main` and enable GitHub Pages with GitHub Actions. The included workflo
 
 - PDF.js / pdfjs-dist 5.4.624, Apache-2.0; license in `site/vendor/pdfjs/LICENSE`.
 - WebLLM 0.2.86, Apache-2.0; license in `site/vendor/webllm/LICENSE`.
-- Qwen model weights are downloaded at runtime from the MLC AI model collection and are not included in this repository.
+- SmolLM2 360M (Light) or Llama 3.2 1B (Balanced) weights download only when requested from the MLC AI model collection; they are not included in this repository.
 - Starter bibliographic metadata was verified against PubMed / Europe PMC and Crossref. Each paper retains a canonical source and an original relevance note.
