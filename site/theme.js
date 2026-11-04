@@ -1,0 +1,1 @@
+(() => { let choice='system';try{choice=localStorage.getItem('shelf-theme')||'system';}catch{}const dark=matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=choice==='system'?(dark?'dark':'light'):choice;document.documentElement.style.colorScheme=document.documentElement.dataset.theme;})();

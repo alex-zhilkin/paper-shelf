@@ -1,0 +1,12 @@
+{
+  "name": "paper-shelf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A personal reading library for GitHub Pages",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check site/app.js && node --check site/model.js && node --check site/github.js && node --check site/reader.js && node --check site/db.js && node --check site/ai.js && node --check site/assistant-ui.js"
+  }
+}
