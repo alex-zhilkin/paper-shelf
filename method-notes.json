@@ -1,0 +1,66 @@
+{
+  "10.1038/s41467-026-68637-4": {
+    "name": "IFUM",
+    "input": "Protein sequence and a folded structure; no unfolded structure is supplied.",
+    "target": "Absolute unfolding ΔG; differences between variants give ΔΔG, including insertions/deletions.",
+    "training": "Mega-scale proteins and disordered proteins; natural-protein data are also used for fine-tuning.",
+    "benchmarks": "Held-out Mega-scale; Mega-scale Common; natural, engineered, and designed proteins.",
+    "source": "https://doi.org/10.1038/s41467-026-68637-4"
+  },
+  "10.1073/pnas.2314853121": {
+    "name": "ThermoMPNN",
+    "input": "Wild-type protein structure and sequence, plus a proposed substitution.",
+    "target": "Single-substitution stability change, ΔΔG.",
+    "training": "Transfer learning from ProteinMPNN, with experimental Mega-scale stability data.",
+    "benchmarks": "Held-out Mega-scale; homology-filtered FireProt; S669; Ssym; protein case studies.",
+    "source": "https://doi.org/10.1073/pnas.2314853121"
+  },
+  "10.7554/eLife.82593": {
+    "name": "RaSP",
+    "input": "A wild-type atomic structure and a proposed amino-acid substitution.",
+    "target": "Mutation-induced stability change, ΔΔG.",
+    "training": "A 3D-CNN representation model followed by a network trained on Rosetta-derived ΔΔG.",
+    "benchmarks": "Rosetta-held-out proteins; experimental stability measurements; S669; Ssym+; Mega-scale.",
+    "source": "https://doi.org/10.7554/eLife.82593"
+  },
+  "10.1093/bioinformatics/btad671": {
+    "name": "PROSTATA",
+    "input": "Wild-type and mutant protein sequences; a 3D structure is not required.",
+    "target": "Single-substitution stability change, ΔΔG.",
+    "training": "ESM-2 transfer learning with curated experimental stability data; an ensemble of five regression heads.",
+    "benchmarks": "S669; Ssym and reverse mutations; protein case studies; natural and designed miniproteins.",
+    "source": "https://doi.org/10.1093/bioinformatics/btad671"
+  },
+  "10.1038/s41586-023-06328-6": {
+    "name": "Mega-scale dataset",
+    "input": "Experimental cDNA-display proteolysis measurements on small protein variants.",
+    "target": "Folding-stability measurements used to train and evaluate predictors.",
+    "training": "Experimental dataset paper; not a predictor.",
+    "benchmarks": "Natural and designed domains with large mutation libraries. Check the exact split used by each downstream model.",
+    "source": "https://doi.org/10.1038/s41586-023-06328-6"
+  },
+  "10.1002/pro.70228": {
+    "name": "KRAS ensembles / MSM",
+    "input": "",
+    "target": "",
+    "training": "",
+    "benchmarks": "",
+    "source": "https://doi.org/10.1002/pro.70228"
+  },
+  "10.3390/biom15060819": {
+    "name": "KRAS binding free energy",
+    "input": "",
+    "target": "",
+    "training": "",
+    "benchmarks": "",
+    "source": "https://doi.org/10.3390/biom15060819"
+  },
+  "10.1021/acs.jctc.4c00222": {
+    "name": "AlphaFold2 ensembles / frustration",
+    "input": "",
+    "target": "",
+    "training": "",
+    "benchmarks": "",
+    "source": "https://doi.org/10.1021/acs.jctc.4c00222"
+  }
+}
