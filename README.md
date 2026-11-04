@@ -38,7 +38,7 @@ Open a PDF and select **Ask paper**.
 
 **Cloud API:** Optional direct connection to the OpenAI Responses API with your own personal API key. The key stays in page memory only and is cleared on reload. The selected paper text and recent chat history are sent only after you ask. The request sets `store: false`. The default model is `gpt-5.6-luna`; the model name is editable. This is personal bring-your-own-key mode, not a shared application with an embedded API key. API credits/billing belong to your account.
 
-Summaries of longer papers use multiple sections followed by a synthesis. Questions use relevant extracted passages. Page citations navigate to the PDF page, and answers can be saved to notes. Chat is saved with the paper. The assistant reads extracted PDF text, not scanned pages, diagrams, or reliably reconstructed mathematical layouts; check equations and figures in the original. Small local models need factual review, especially for quantitative chemistry. AI answers are not pre-generated or invented when a connection is unavailable.
+Local summaries make one bounded request using the opening text and relevant passages; they are brief overviews, not complete reviews. Cloud requests include the extracted text up to the input budget, then use relevant passages for longer documents. Page citations navigate to the PDF page, and answers can be saved to notes. Chat is saved with the paper. The assistant reads extracted PDF text, not scanned pages, diagrams, or reliably reconstructed mathematical layouts; check equations and figures in the original. Small local models need factual review, especially for quantitative chemistry. AI answers are not pre-generated or invented when a connection is unavailable.
 
 ## Run locally
 

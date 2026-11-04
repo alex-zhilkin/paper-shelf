@@ -40,20 +40,13 @@ export class BrowserAssistant{
     const full=pages.map(p=>`[PDF page ${p.page}]\n${p.text}`).join('\n\n');
     let evidence;
     if(summary&&full.length>8000){
-      const chunks=splitPages(pages,4500),notes=[];if(chunks.length>32)throw Error('This paper is too long for a lightweight full summary. Ask a focused question or use cloud AI.');
-      for(let i=0;i<chunks.length;i++){
-        if(this.cancelled)throw new DOMException('Stopped','AbortError');
-        this.onProgress(`Reading section ${i+1} of ${chunks.length}…`);
-        const part=chunks[i];
-        const note=await this.complete(buildMessages({paper,evidence:`[PDF page ${part.page}]\n${part.text}`,question:'Extract the research question, methods, key findings, and limitations stated in this excerpt. Keep only supported facts, retain numbers carefully, and cite its PDF page. Maximum 90 words.'}),()=>{},170);
-        notes.push(`[Source PDF page ${part.page}]\n${note}`);
-      }
-      const perSection=Math.floor(9000/notes.length);evidence=notes.map(note=>note.slice(0,perSection)).join('\n\n');
-    }else evidence=summary?full.slice(0,9500):selectEvidence(pages,question,6000);
+      evidence=selectEvidence(pages,'What is the research question? Abstract methods results discussion conclusions limitations.',8000);
+      question+=' This is a brief overview of selected passages, not a complete review. Say when a requested detail is absent.';
+    }else evidence=summary?full:selectEvidence(pages,question,6000);
     if(!evidence.trim())throw Error('This PDF has no readable text. Scanned papers need OCR before the assistant can read them.');
     this.onProgress('Preparing an answer…');
     const messages=buildMessages({paper,evidence,history:summary?[]:history,question});messages[0].content+=' Use a short, literal description of the task or finding in the excerpts. Include numbers only if the user asks for them and the excerpt states them clearly. If unsure, say the supplied text does not establish the answer.';const answer=await this.complete(messages,onText,550);
-    if(!summary&&!/\[p\./i.test(answer)){
+    if(!/\[p\./i.test(answer)){
       const sourcePages=[...new Set([...evidence.matchAll(/\[PDF page (\d+)\]/g)].map(m=>m[1]))];
       return answer+'\n\nPassages provided: '+sourcePages.map(p=>'[p. '+p+']').join(', ');
     }
