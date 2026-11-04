@@ -4,7 +4,7 @@ A quiet personal reading library, hosted as a static app on GitHub Pages. Light,
 
 ## Use it
 
-Open the published Pages URL. The initial collection contains six verified Gennady Verkhivker references related to free energy. **Add paper** accepts a PDF or a DOI/link. Titles, authors, years, topics, and read-next priority are editable. Click a title for paper details and notes. Papers can be archived and restored.
+Open the published Pages URL. The initial library contains five stability-prediction/benchmark references (IFUM, ThermoMPNN, RaSP, PROSTATA, and the Mega-scale experimental dataset) and three recent Verkhivker coauthored studies from 2024–2025. The older foundational references remain accessible in the archived Foundations collection. **Add paper** accepts a PDF or a DOI/link. Titles, authors, years, topics, and read-next priority are editable. Click a title for paper details and notes. Papers can be archived and restored.
 
 PDFs can be read immediately after uploading on the current device. The reader supports text selection, search, page navigation, zoom, notes, and remembered position. Phones get full-width reading and a separate notes/assistant panel.
 
@@ -18,7 +18,15 @@ PDFs can be read immediately after uploading on the current device. The reader s
 
 The app repository is public; the library repository is private. Only `site/` is published. `library-seed/` is excluded from Git and Pages deployment. Metadata is stored in `shelf/catalog.json`; PDFs in `shelf/pdfs/`. Reading changes save to IndexedDB first, then sync. Each metadata field has its own change timestamp; competing note edits preserve both versions, and chat histories are merged by message ID. Progress updates are batched to avoid a commit for every page turn. A visible error preserves pending local changes for retry. This is single-person synchronization, not a collaborative editing system.
 
-The first library seed includes the 1996 proceedings manuscript PDF obtained from the [Stanford Pacific Symposium on Biocomputing archive](https://psb.stanford.edu/psb-online/proceedings/psb96/verkhivker.pdf). The other five entries are references with verified source links. Attach PDFs you have access to. Papers with a public PDF link offer a download attempt; sources that block cross-origin downloads require downloading and attaching the file manually.
+The private library includes the RaSP and PROSTATA PDFs from their publishers, along with the 1996 proceedings manuscript PDF obtained from the [Stanford Pacific Symposium on Biocomputing archive](https://psb.stanford.edu/psb-online/proceedings/psb96/verkhivker.pdf). Other entries are references with verified source links; source access and PDF availability vary. Attach PDFs you have access to. Papers with a public PDF link offer a download attempt; sources that block cross-origin downloads require downloading and attaching the file manually.
+
+## Collections
+
+Create a collection using the plus button in the desktop sidebar or **+ New collection** in the compact navigation picker. Select existing papers when creating it, or choose a collection in the Add/Edit paper form. A paper can keep multiple collection tags when added through the collection dialog. Empty collections sync to GitHub too.
+
+The **ΔG benchmarks** collection contains a source-linked comparison of input, prediction target, and evaluation datasets. Keep absolute unfolding ΔG separate from mutation-induced ΔΔG, and distinguish original model training from later retrained baselines. The comparison does not invent numerical rankings across different datasets or test splits.
+
+**Compare papers / Ask collection** supports an optional discussion based on reference details, verified method notes, and your own notes. These collection discussions do not read all attached PDFs; the dialog states that explicitly. Group discussions remain in the current page session, and their answers can be copied. Individual-paper chat uses the selected PDF text and is saved with that paper.
 
 ## Paper assistant
 
